@@ -1,8 +1,8 @@
-import {Schema, model, Document} from "mongoose"
+import { Schema, model, Document } from "mongoose";
 
 const RefreshTokenSchema = new Schema({
   userId: String,
-  token: String
+  token: String,
 });
 
 export interface RefreshToken extends Document {
@@ -10,4 +10,4 @@ export interface RefreshToken extends Document {
   token: string
 }
 
-export const RefreshTokenModel =  model<RefreshToken>('refresh-tokens', RefreshTokenSchema);
+export const RefreshTokenModel = model<RefreshToken>("refresh-tokens", RefreshTokenSchema);

@@ -1,8 +1,8 @@
-import {Schema, model, Document} from "mongoose"
+import { Schema, model, Document } from "mongoose";
 
 const ResetPasswordSchema = new Schema({
   userId: String,
-  token: String
+  token: String,
 });
 
 export interface ResetPassword extends Document {
@@ -10,4 +10,4 @@ export interface ResetPassword extends Document {
   token: string
 }
 
-export const ResetPasswordModel  = model<ResetPassword>('reset-password-tokens', ResetPasswordSchema);
+export const ResetPasswordModel = model<ResetPassword>("reset-password-tokens", ResetPasswordSchema);

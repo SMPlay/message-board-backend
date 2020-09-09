@@ -1,8 +1,8 @@
-import  {Schema,model, Document} from 'mongoose';
+import { Schema, model, Document } from "mongoose";
 
 const confirmTokenSchema = new Schema({
   userId: String,
-  token: String
+  token: String,
 });
 
 export interface ConfirmToken extends Document {
@@ -10,4 +10,4 @@ export interface ConfirmToken extends Document {
   token: string
 }
 
-export const ConfirmTokenModel =  model<ConfirmToken>("confirm-tokens", confirmTokenSchema);
+export const ConfirmTokenModel = model<ConfirmToken>("confirm-tokens", confirmTokenSchema);

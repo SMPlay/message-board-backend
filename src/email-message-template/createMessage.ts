@@ -1,5 +1,4 @@
-const createMessage = ( token: string, buttonText='Подтверждение регистрации', url='confirm' ) => {
-  return `
+export const createMessage = (token: string, buttonText = "Подтверждение регистрации", url = "confirm") => `
     <!doctype html>
 <html lang="en">
 <head>
@@ -115,7 +114,7 @@ const createMessage = ( token: string, buttonText='Подтверждение р
                             <tr>
                                 <td align="center">
                                     <p>
-                                        <a href='http://localhost:3000/${url}/${ token }' class="button">${buttonText}</a>
+                                        <a href='http://localhost:3000/${url}/${token}' class="button">${buttonText}</a>
                                     </p>
                                 </td>
                             </tr>
@@ -146,7 +145,4 @@ const createMessage = ( token: string, buttonText='Подтверждение р
 </table>
 </body>
 </html>
-  `
-}
-
-module.exports = createMessage;
+  `;
