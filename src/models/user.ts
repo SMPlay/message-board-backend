@@ -1,12 +1,12 @@
-import {Schema, model, Document} from "mongoose";
+import { Schema, model, Document } from "mongoose";
 
 const UsersSchema = new Schema({
-    name: String,
-    email: String,
-    login: String,
-    password: String,
-    isConfirmed: Boolean,
-    isAdmin: Boolean,
+  name: String,
+  email: String,
+  login: String,
+  password: String,
+  isConfirmed: Boolean,
+  isAdmin: Boolean,
 });
 
 export interface User extends Document {
@@ -18,4 +18,4 @@ export interface User extends Document {
     isAdmin: boolean,
 }
 
-export const UserModel = model<Document>("users", UsersSchema);
+export const UserModel = model<User>("users", UsersSchema);

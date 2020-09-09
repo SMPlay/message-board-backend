@@ -27,7 +27,7 @@ global.XMLHttpRequest = require("xhr2");
 const app = express.default();
 
 app.use(cors({ origin: true, credentials: true }));
-app.use(cookieParser())
+app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
