@@ -1,28 +1,38 @@
 import mongoose from "mongoose";
 import * as express from "express";
+import { v2 as cloudinary } from "cloudinary";
 import cors from "cors";
-import cookieParser from "cookie-parser"
+import cookieParser from "cookie-parser";
 import bodyParser from "body-parser";
+import dotenv from "dotenv";
 
-const password = "sJ2dzkNEkoKoy9uk";
-const dbName = "message_board";
+if (process.env.NODE_ENV !== "production") {
+  dotenv.config();
+}
+
 mongoose.connect(
-`mongodb+srv://admin:${password}@cluster0.ofskr.mongodb.net/${dbName}?retryWrites=true&w=majority`,
-{ useNewUrlParser: true, useUnifiedTopology: true }
+  `mongodb+srv://admin:${process.env.DB_PASSWORD}@cluster0.ofskr.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`,
+  { useNewUrlParser: true, useUnifiedTopology: true },
 );
+
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
 const app = express.default();
 
 app.use(cors({ origin: "http://localhost:3000", credentials: true }));
-app.use(cookieParser())
+app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-mongoose.set('useFindAndModify', false);
+mongoose.set("useFindAndModify", false);
 const dbConnection = mongoose.connection;
 dbConnection.on("error", (err) => console.log(`Connection error: ${err}`));
 dbConnection.once("open", () => console.log("Connected to DB!"));
 
 app.listen({ port: 4001 }, () => {
-console.log(`🚀 Server ready at`)
-})
+  console.log("🚀 Server ready at");
+});
